@@ -1,55 +1,31 @@
-# Project 2: Multi-Agent Pacman
+## Readme for Second AI Assignment (Pacman Project 2)
 
-This project involves creating agents for the game of Pacman that can handle multiple agents and incorporate adversarial search algorithms.
+**Name**: Konstantinos Kanellakis 
+**A.M.**: sdi2000064
 
-## Run Grader
+This readme file provides an overview of the Pacman project, specifically focusing on questions Q1 to Q5. The project involves the implementation of various algorithms for Pacman agents.
 
-Use of Python 3.6 is advised for the smooth execution of the program, but it can run with newer Python versions (It may need some modifications - NOT suggested).<br/>
-To execute in the terminal:
+### Q1. Reflex Agent
 
-```
-python autograder.py
-```
+The reflex agent evaluates actions based on the following factors:
+1. Distance to the closest dot
+2. Distance to each ghost agent
+3. Distance to each capsule
 
+The evaluation function aims to prioritize actions that help Pacman eat the closest dot as quickly as possible. This is achieved by adding a fraction (1/min) to the "points" variable. Additionally, the evaluation function rewards actions that result in Pacman being farther away from ghosts to avoid losing. However, there are situations when Pacman has eaten a capsule and can kill ghosts, so actions that bring Pacman closer to ghosts are rewarded.
 
-## Agents Implemented
+### Q2. Minimax
 
-The following agents are implemented for playing Pacman:
+The minimax algorithm is implemented based on the provided pseudocode and lecture slides. Additionally, a depth variable is used to keep track of the expanded states when it is Pacman's turn.
 
-1. **Reflex Agent**
-   - Description: A reflex agent chooses an action at each choice point by examining its alternatives via a state evaluation function.
-   - Implementation: `ReflexAgent` class in `multiAgents.py`
+### Q3. Alpha-Beta Pruning
 
-2. **Minimax Agent**
-   - Description: The minimax agent uses the minimax algorithm to make decisions by exploring the game tree and finding the optimal move.
-   - Implementation: `MinimaxAgent` class in `multiAgents.py`
+Similar to the Minimax algorithm (Q2), Alpha-Beta Pruning (ABP) incorporates a and b variables to prune unnecessary states without affecting the result. The implementation follows the pseudocode from the lectures/slides, but with the use of `<` and `>` instead of `<=` and `>=`.
 
-3. **Alpha-Beta Agent**
-   - Description: The alpha-beta agent improves upon the minimax agent by using alpha-beta pruning to reduce the number of nodes that need to be evaluated.
-   - Implementation: `AlphaBetaAgent` class in `multiAgents.py`
+### Q4. Expectimax
 
-## Getting Started
+The Expectimax algorithm is similar to Minimax (Q2), but with a change in the min function. Instead of calculating the optimal evaluation value, the average evaluation value of all actions is calculated. This assumption accounts for the fact that the min agents may not always make optimal decisions, leading to potential losses for Pacman (not in the autograder).
 
-To get started with the project, you can use the provided implementations of the agents and run them on the Pacman game. Each agent has a specific strategy for making decisions.
+### Q5. Evaluation Function
 
-## Usage
-
-To use the agents, you need to have the following code available:
-
-- `ReflexAgent`: Implements a reflex agent that uses a state evaluation function to choose actions.
-- `MinimaxAgent`: Implements a minimax agent that uses the minimax algorithm to make decisions.
-- `AlphaBetaAgent`: Implements an alpha-beta agent that improves upon the minimax agent using alpha-beta pruning.
-
-Please refer to the code provided in the project for the complete implementations of the agents.
-
-## Additional Notes
-
-- The agents utilize different search algorithms and evaluation functions to make decisions.
-- The `GameState` class provides information about the current state of the game, including the positions of agents and game elements.
-- The game involves multiple agents, including Pacman and ghosts, each with different goals and behaviors.
-
-## Resources
-
-If you need additional information or resources related to the Pacman projects, you can [mail me](mailto:kanellakhskostas@gmail.com) or refer to the official CS188 course materials from UC Berkeley:
-
-- [CS188 Pacman Projects](https://inst.eecs.berkeley.edu/~cs188/sp22/project2/)
+The evaluation function in Q5 is similar to the one described in Q1. However, it is used to evaluate a state rather than an action. One difference is that there is no scenario in a state where Pacman is in a capsule since it would have been eaten. Therefore, the corresponding block of code has been commented out.

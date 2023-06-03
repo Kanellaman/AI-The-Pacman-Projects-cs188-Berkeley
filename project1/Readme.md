@@ -1,62 +1,43 @@
-# Project 1: Search Algorithms
+## Readme for First AI Assignment (Pacman Project 1)
 
-This project implements search algorithms to find optimal paths for Pacman through mazes. The goal is to search the deepest nodes in the search tree first and return a list of actions that reaches the goal.
+**Name**: Konstantinos Kanellakis
+**A.M.**: sdi2000064
 
-## Run Grader
+This readme file provides an overview of the Pacman project, specifically focusing on questions Q1 to Q8. The project is based on the pseudocode presented in the lecture about graph search algorithms. 
 
-Use of python3.6 is advised for the smooth execution of the program, but it can run with newer python version (It may be need some modifications-NOT suggested).<br/>
-To execute in terminal:
-```
-python autograder.py
-```
+### Q1. Depth First Search
 
-## Algorithms Implemented
+In this question, we implement depth-first search (DFS) using a stack data structure. The algorithm follows a Last-In-First-Out (LIFO) policy. We visit and delete the last node inserted into the list.
 
-The following search algorithms are implemented:
+### Q2. Breadth First Search
 
-1. **Depth-First Search**
-   - Algorithm: Depth-first search (DFS)
-   - Description: Search the deepest nodes in the search tree first.
-   - Implementation: `depthFirstSearch(problem)`
+For Q2, we implement breadth-first search (BFS) using a queue data structure. The algorithm follows a First-In-First-Out (FIFO) policy. We visit and delete the node that was inserted first into the list.
 
-2. **Breadth-First Search**
-   - Algorithm: Breadth-first search (BFS)
-   - Description: Search the shallowest nodes in the search tree first.
-   - Implementation: `breadthFirstSearch(problem)`
+### Q3. Uniform Cost Search
 
-3. **Uniform Cost Search**
-   - Algorithm: Uniform cost search (UCS)
-   - Description: Search the node of least total cost first.
-   - Implementation: `uniformCostSearch(problem)`
+Uniform cost search (UCS) is implemented in Q3. This algorithm utilizes a priority queue, which ensures that we visit the node with the lowest cost first.
 
-4. **A* Search**
-   - Algorithm: A* search (A-Star)
-   - Description: Search the node that has the lowest combined cost and heuristic first.
-   - Implementation: `aStarSearch(problem, heuristic=nullHeuristic)`
+### Q4. A* Search
 
-## Getting Started
+Similar to UCS, A* search (Q4) also employs a priority queue. However, in addition to the cost, the priority is determined by the heuristic function's value for each node. The algorithm aims to find the optimal path to the goal state.
 
-To get started with the project, you can use the provided implementations of the search algorithms and run them on specific problem instances. Each algorithm takes a `SearchProblem` as input and returns a list of actions that leads Pacman to the goal.
+### Q5. Finding All Corners
 
-## Usage
+The state representation for this question includes the current location (x, y) and a list of remaining corners to find. The starting state is set to the node where Pacman begins, along with the list of corners. The function `getStartState()` returns this information.
 
-To use the search algorithms, you need to have the following code available:
+To determine if the goal state is reached, we check if there are no more corners left in the current state's corner list. This information is obtained by calling the function `isGoalState()`.
 
-- `depthFirstSearch(problem)`: Implements depth-first search algorithm.
-- `breadthFirstSearch(problem)`: Implements breadth-first search algorithm.
-- `uniformCostSearch(problem)`: Implements uniform cost search algorithm.
-- `aStarSearch(problem, heuristic=nullHeuristic)`: Implements A* search algorithm with an optional heuristic function.
+To generate the successors of a node, we explore every possible direction: north, south, east, and west. We verify if each direction leads to a wall to avoid going in that direction. If there is no wall, we add the node to the successors list. Additionally, if the next node is a corner that hasn't been visited yet, we remove it from the corner list. The function `getSuccessors()` implements this algorithm.
 
-Please refer to the code provided in the project for the complete implementations.
+### Q6. Corners Problem Heuristic
 
-## Additional Notes
+For the corners problem, the heuristic function evaluates the Manhattan distance from the current node to each unvisited corner. The heuristic includes the minimum Manhattan distance among the unvisited corners. This approach ensures that the heuristic does not overestimate the actual cost of the solution and is admissible. Furthermore, as we move closer to the corners and the goal state, the Manhattan distance overall decreases, making the heuristic consistent.
 
-- The search algorithms utilize a stack, queue, or priority queue to manage the search frontier.
-- The `SearchProblem` class defines the search problem and provides necessary methods like `getStartState()`, `isGoalState()`, and `getSuccessors()`. Ensure that you have implemented this class correctly.
+### Q7. Eating All the Dots
 
-## Resources
+This question resembles the Traveling Salesman Problem (TSP). However, we don't need to return to the starting position. Thus, the goal is to find the maximum distance between the current state and any uneaten dot. To achieve this, we calculate the Maze distance for each dot from the current state and select the maximum distance. The Maze distance is preferred over the Manhattan distance as it takes into account the maze layout and avoids considering walls.
 
-If you need additional information or resources related to the Pacman projects, you can [mail me](mailto:kanellakhskostas@gmail.com) or refer to the official CS188 course materials from UC Berkeley:
+### Q8. Suboptimal Search
 
-- [CS188 Pacman Projects](https://inst.eecs.berkeley.edu/~cs188/sp22/project1/)
+In Q8, to find the path, we utilize Uniform Cost Search (UCS) as the algorithm greedily chooses the next state. If there is still uneaten food, indicating that the goal state hasn't been reached, the function returns False. If there is no uneaten food left, the function returns True, indicating the goal state has been reached.
 

@@ -1,7 +1,9 @@
 # Pacman AI Projects
 
 This repository contains my implementations of three Pacman projects assigned as part of my coursework at the University of Athens during my junior year ([YS02](https://cgi.di.uoa.gr/~ys02/)). These projects are adapted from the original Pacman projects offered in the CS188 course at the University of California, Berkeley. Each project delves into different aspects of artificial intelligence, exploring a range of techniques to control the behavior of Pacman and other agents in the game.
-
+<div id="header" align="center">
+  <img src="https://tenor.com/view/pacman-gaming-retro-gif-16731682.gif" width="100"/>
+</div>
 ## Projects
 
 The repository is organized into three folders, each representing a project. Each folder contains the files I changed to solve the problems needed. If you would like to run the code, download the rest of the files for each project (<u>Links given below</u>):

@@ -4,6 +4,7 @@ This repository contains my implementations of three Pacman projects assigned as
 <div id="header" align="center">
   <img src="https://tenor.com/view/pacman-gaming-retro-gif-16731682.gif" width="100"/>
 </div>
+
 ## Projects
 
 The repository is organized into three folders, each representing a project. Each folder contains the files I changed to solve the problems needed. If you would like to run the code, download the rest of the files for each project (<u>Links given below</u>):

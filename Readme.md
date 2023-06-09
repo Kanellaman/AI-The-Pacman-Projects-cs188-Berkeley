@@ -2,7 +2,7 @@
 
 This repository contains my implementations of three Pacman projects assigned as part of my coursework at the University of Athens during my junior year ([YS02](https://cgi.di.uoa.gr/~ys02/)). These projects are adapted from the original Pacman projects offered in the CS188 course at the University of California, Berkeley. Each project delves into different aspects of artificial intelligence, exploring a range of techniques to control the behavior of Pacman and other agents in the game.
 <div id="header" align="center">
-  <img src="https://tenor.com/view/old-school-video-games-pac-man-gif-12836291.gif" width="100"/>
+  <img src="https://tenor.com/view/old-school-video-games-pac-man-gif-12836291.gif" width="300"/>
 </div>
 
 ## Projects
